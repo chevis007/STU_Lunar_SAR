@@ -1283,7 +1283,7 @@
           "Systems": [ "SnapAssetToPlanet", "ParamWrangler" ]
         },
         "#FromTemplate": {
-          "Source_Path": "SharedData/SCAssets/AssemblyParts/Cooling_System.json",
+          "Source_Path": "SharedData/SCAssets/Basic/EmptyEntity.json",
           "ParamOverrides": {
             "Location": [ "doubleV3", -12825.0, -12611.0, -1739203.0 ],
             "Rotation": [ "doubleV4", 0.9848078, 0, 0, 0.1736482 ],
@@ -1307,7 +1307,7 @@
           "Systems": [ "SnapAssetToPlanet", "ParamWrangler" ]
         },
         "#FromTemplate": {
-          "Source_Path": "SharedData/SCAssets/AssemblyParts/Cooling_System.json",
+          "Source_Path": "SharedData/SCAssets/Basic/EmptyEntity.json",
           "ParamOverrides": {
             "Location": [ "doubleV3", -12825.0, -12611.0, -1739203.0 ],
             "Rotation": [ "doubleV4", 0.9848078, 0, 0, 0.1736482 ],
@@ -1334,7 +1334,7 @@
           "Systems": [ "SnapAssetToPlanet", "ParamWrangler" ]
         },
         "#FromTemplate": {
-          "Source_Path": "SharedData/SCAssets/AssemblyParts/Cooling_System.json",
+          "Source_Path": "SharedData/SCAssets/Basic/EmptyEntity.json",
           "ParamOverrides": {
             "Location": [ "doubleV3", -12825.0, -12611.0, -1739203.0 ],
             "Rotation": [ "doubleV4", 0.9848078, 0, 0, 0.1736482 ],
@@ -1361,7 +1361,7 @@
           "Systems": []
         },
         "#FromTemplate": {
-          "Source_Path": "SharedData/SCAssets/AssemblyParts/Cooling_System.json",
+          "Source_Path": "SharedData/SCAssets/Basic/EmptyEntity.json",
           "ParamOverrides": {
             "Name": "EVA1_Oxygen_Tank",
             "Attachment": "Fixed",
@@ -1384,7 +1384,7 @@
           "Systems": []
         },
         "#FromTemplate": {
-          "Source_Path": "SharedData/SCAssets/AssemblyParts/Cooling_System.json",
+          "Source_Path": "SharedData/SCAssets/Basic/EmptyEntity.json",
           "ParamOverrides": {
             "Name": "EVA2_Oxygen_Tank",
             "Attachment": "Fixed",
@@ -1407,7 +1407,7 @@
           "Systems": []
         },
         "#FromTemplate": {
-          "Source_Path": "SharedData/SCAssets/AssemblyParts/Cooling_System.json",
+          "Source_Path": "SharedData/SCAssets/Basic/EmptyEntity.json",
           "ParamOverrides": {
             "Name": "EVA1_Battery",
             "Attachment": "Fixed",
@@ -1430,7 +1430,7 @@
           "Systems": []
         },
         "#FromTemplate": {
-          "Source_Path": "SharedData/SCAssets/AssemblyParts/Cooling_System.json",
+          "Source_Path": "SharedData/SCAssets/Basic/EmptyEntity.json",
           "ParamOverrides": {
             "Name": "EVA2_Battery",
             "Attachment": "Fixed",
@@ -1453,7 +1453,7 @@
           "Systems": []
         },
         "#FromTemplate": {
-          "Source_Path": "SharedData/SCAssets/AssemblyParts/Cooling_System.json",
+          "Source_Path": "SharedData/SCAssets/Basic/EmptyEntity.json",
           "ParamOverrides": {
             "Name": "LTV1_Battery",
             "Attachment": "Fixed",
@@ -1476,7 +1476,7 @@
           "Systems": []
         },
         "#FromTemplate": {
-          "Source_Path": "SharedData/SCAssets/AssemblyParts/Cooling_System.json",
+          "Source_Path": "SharedData/SCAssets/Basic/EmptyEntity.json",
           "ParamOverrides": {
             "Name": "LTV2_Battery",
             "Attachment": "Fixed",
@@ -1502,7 +1502,7 @@
           "IsRoot": true,
           "Subparts": {
             "Space": {
-              "Source_Path": "SharedData/SCAssets/AssemblyParts/Space.json",
+              "Source_Path": "SharedData/SCAssets/Basic/EmptyEntity.json",
               "Attachment": "Fixed",
               "Rel_Location": [ "doubleV3", 3.0, 0.0, 0.0 ],
               "Rel_Rotation": [ "doubleV4", 0.0, 0.0, 0.0, 1.0 ],
