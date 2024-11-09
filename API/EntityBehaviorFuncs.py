@@ -4,6 +4,42 @@ import numpy as np
 
 from API.STU_Common import Command, _commandID_Str
 
+def _rotation_matrix_z(angle_deg):
+    """
+    Returns the rotation matrix for a rotation about the Z-axis by the given angle in degrees.
+    """
+    angle_rad = np.radians(angle_deg)
+    c = np.cos(angle_rad)
+    s = np.sin(angle_rad)
+    return np.array([[ c, -s, 0],
+                    [ s,  c, 0],
+                    [ 0,  0, 1]])
+
+def _rotation_matrix_y(angle_deg):
+    """
+    Returns the rotation matrix for a rotation about the Y-axis by the given angle in degrees.
+    """
+    angle_rad = np.radians(angle_deg)
+    c = np.cos(angle_rad)
+    s = np.sin(angle_rad)
+    return np.array([[ c,  0, s],
+                    [ 0,  1, 0],
+                    [-s,  0, c]])
+
+def _calculate_passive_transformation_matrix(azimuth_deg, elevation_deg) -> np.ndarray[np.float64]:
+    """
+    Calculates the passive transformation matrix from the parent frame to the body frame,
+    given parent-relative azimuth and elevation angles in degrees.
+    """
+    # Negative angles for passive transformation, but negative again because
+    # az is a -z rotation and el is a -y rotation
+    R_z = _rotation_matrix_z(azimuth_deg)
+    R_y = _rotation_matrix_y(elevation_deg)
+    
+    # Compute the passive transformation matrix
+    R_p2b = np.dot(R_y, R_z)
+    return R_p2b
+
 
 class EntityBehavior:
     def __init__(self, en: st.Entity) -> None:
@@ -125,15 +161,16 @@ class EntityBehavior:
         Key values are command types and values are Command objects.
         '''
         return self.active_commands
-    
+
+
+
     def CameraPan(self, azimuth_deg: float, elevation_deg: float):
         '''
         Pan the entity's camera to the specified azimuth and elevation.
         '''
         #TODO construct 3d relative rotation from az and el
-        # camera_en : st.Entity = self.en.GetParam(st.VarType.entityRef, "Camera")
-        # camera_en.setRotation_DCM(np.identity(3), self.en.GetBodyFixedFrame()) #TODO
-        pass
+        dcm = _calculate_passive_transformation_matrix(azimuth_deg, elevation_deg)
+        self.camera.setRotation_DCM(dcm, self.en.GetBodyFixedFrame()) #TODO
 
     def CameraCapture(self, exposure : float) -> int:
         '''
@@ -146,7 +183,7 @@ class EntityBehavior:
         #TODO from camera en params
         properties.ResolutionX = 512
         properties.ResolutionY = 512
-        properties.FOV = 90
+        properties.FOV = self.camera.GetParam(st.VarType.double, "FOV")
         # leaving captureID blank so it randomizes
         return st.CaptureImage(self.camera, properties)
 

@@ -52,7 +52,8 @@ def ProcessImage(image : st.CapturedImage):
     img_b = np.array(image.PixelsB, dtype=np.uint8).reshape((resy, resx))
 
     # Stack channels into a single 3D array (height x width x 3)
-    img_rgb = np.stack((img_r, img_g, img_b), axis=-1)
+    img_rgb = np.stack((img_b, img_g, img_r), axis=-1)
+    image_changed = True
 
 ###########################
 ##  Command Definitions  ##
@@ -88,27 +89,26 @@ def RotateToAzimuth_LTV1_Failed(payload : st.ParamMap):
     # LTV1_task_graph.clear_all() #wipe existing tasks
 mm.OnCommandFail(LTV1, "RotateToAzimuth", RotateToAzimuth_LTV1_Failed)
 
-# def CameraCapture_LTV1_Complete(payload : st.ParamMap):
-#     st.OnScreenLogMessage("CameraCapture command complete.", "Mission Manager", st.Severity.Info)
-#     LTV1_TaskComplete(payload)
-#     # TODO from EntityTelemetry or similar class like EntitySpecs
+def CameraCapture_LTV1_Complete(payload : st.ParamMap):
+    st.OnScreenLogMessage("CameraCapture command complete.", "Mission Manager", st.Severity.Info)
+    LTV1_TaskComplete(payload)
 
-#     # image = st.CapturedImage()
-#     # image.PixelsR = payload.GetParamArray(st.VarType.uint8, "PixelsR")
-#     # image.PixelsG = payload.GetParamArray(st.VarType.uint8, "PixelsG")
-#     # image.PixelsB = payload.GetParamArray(st.VarType.uint8, "PixelsB")
-#     # image.properties.ResolutionX = payload.GetParam(st.VarType.int32, "ResolutionX")
-#     # image.properties.ResolutionY = payload.GetParam(st.VarType.int32, "ResolutionY")
-#     # image.properties.EV = payload.GetParam(st.VarType.double, "Exposure")
-#     # image.properties.FOV = payload.GetParam(st.VarType.double, "FOV")
-#     # ProcessImage(image)
+    image = st.CapturedImage()
+    image.PixelsR = payload.GetParamArray(st.VarType.uint8, "PixelsR")
+    image.PixelsG = payload.GetParamArray(st.VarType.uint8, "PixelsG")
+    image.PixelsB = payload.GetParamArray(st.VarType.uint8, "PixelsB")
+    image.properties.ResolutionX = payload.GetParam(st.VarType.int32, "ResolutionX")
+    image.properties.ResolutionY = payload.GetParam(st.VarType.int32, "ResolutionY")
+    image.properties.EV = payload.GetParam(st.VarType.double, "Exposure")
+    image.properties.FOV = payload.GetParam(st.VarType.double, "FOV")
+    ProcessImage(image)
 
-# mm.OnCommandComplete(LTV1, "CaptureImage", CameraCapture_LTV1_Complete)
+mm.OnCommandComplete(LTV1, "CaptureImage", CameraCapture_LTV1_Complete)
 
-# def CameraCapture_LTV1_Failed(payload : st.ParamMap):
-#     st.OnScreenLogMessage("CameraCapture command failed.", "Mission Manager", st.Severity.Info)
-#     LTV1_TaskFail(payload)
-# mm.OnCommandFail(LTV1, "CaptureImage", CameraCapture_LTV1_Failed)
+def CameraCapture_LTV1_Failed(payload : st.ParamMap):
+    st.OnScreenLogMessage("CameraCapture command failed.", "Mission Manager", st.Severity.Info)
+    LTV1_TaskFail(payload)
+mm.OnCommandFail(LTV1, "CaptureImage", CameraCapture_LTV1_Failed)
 # Not handling failure, on purpose.
 
 ################################
@@ -129,16 +129,30 @@ waypoint_3 = XY(xy_LTV1.x + 20, xy_LTV1.y + 40)
 # task = Task(name, Command(entity, xy coord, name))
 # taskgraph << task, dependencies (as a list of names, or blank list)
 
+# Moves
 move_1 = TG.Task("Move1", Command_MoveToCoord(LTV1, waypoint_1, "Move1"))
 LTV1_task_graph.add_task(move_1, [])
 
 move_2 = TG.Task("Move2", Command_MoveToCoord(LTV1, waypoint_2, "Move2"))
 LTV1_task_graph.add_task(move_2, ["Move1"])
 
-#NOTE: camera capture is currently causing crashes; do not use for now!
-# img_cap1 = TG.Task("Capture1", Command_CaptureImage(LTV1, 15.0, "Capture1"))
+# Images
+exposure = 15.0
+
+# EXAMPLE CODE FOR ADDING PLANNED IMAGE-CAPTURE TASKS
+# img_cap1 = TG.Task("Capture1", Command_CaptureImage(LTV1, exposure, "Capture1"))
 # LTV1_task_graph.add_task(img_cap1, ["Move1"])
 
+# img_cap2 = TG.Task("Capture2", Command_CaptureImage(LTV1, exposure, "Capture2"))
+# LTV1_task_graph.add_task(img_cap2, ["Capture1"])
+
+# cam_turn = TG.Task("camturn", Command_CameraPan(LTV1, 60.0, 11.0, "camturn"))
+# LTV1_task_graph.add_task(cam_turn, ["Capture2"])
+
+# img_cap3 = TG.Task("Capture3", Command_CaptureImage(LTV1, exposure, "Capture3"))
+# LTV1_task_graph.add_task(img_cap3, ["Capture2"])
+
+# More moves
 move_3 = TG.Task("Move3", Command_MoveToCoord(LTV1, waypoint_3, "Move3"))
 LTV1_task_graph.add_task(move_3, ["Move2"])
 
@@ -157,16 +171,24 @@ Scout2_task_graph.add_task(Scout2_move1, [])
 
 # Wait a bit, then broadcast that the LTVs are starting their movements
 time.sleep(5.0)
-st.OnScreenLogMessage("Starting LTV movements.", "Mission Manager", st.Severity.Info)
+st.OnScreenLogMessage("Starting movements.", "Mission Manager", st.Severity.Info)
+
 
 #######################
 ##  Simulation Loop  ##
 #######################
 
+iterator = 0
+
 exit_flag = False
 while not exit_flag:
     LoopFreqHz = st.GetThisSystem().GetParam(st.VarType.double, "LoopFreqHz")
     time.sleep(1.0 / LoopFreqHz)
+    iterator += 1
+
+    # EXAMPLE: Take a camera image periodically, outside of the task graph
+    # if iterator % 500 == 0:
+    #     mm.SendCommand(LTV1, "CaptureImage", Command_CaptureImage(LTV1, exposure, "MyImCapture"))
 
     #NOTE: Can send commands without using taskgraph as well, but will need to wait for 
     # completion manually (mm.OnCommandComplete()) before sending a new command of the 
@@ -223,7 +245,9 @@ while not exit_flag:
     #     #NOTE might want to do something else here?
 
     if image_changed:
+        # HOW TO SHOW AN IMAGE ON-SCREEN; PROBABLY DEACTIVATE THIS SO IT DOESN'T POP UP WHEN NOT TESTING
         cv2.imshow("Captured Image", img_rgb)
+        cv2.waitKey(1)
         image_changed = False
 
 st.leave_sim()

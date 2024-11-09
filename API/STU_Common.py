@@ -71,7 +71,6 @@ def Command_RotateToAzimuth(en: st.Entity, azimuth: float, task_id: str):
     return cmd
 
 def Command_CameraPan(en: st.Entity, azimuth_deg: float, elevation_deg: float, task_id: str):
-    raise NotImplementedError("CameraPan is not yet implemented in the competitor API")
     cmd = Command("CameraPan", en)
     cmd.payload.AddParam(st.VarType.string, "TaskID", task_id)
     cmd.payload.AddParam(st.VarType.double, "Azimuth", azimuth_deg)
@@ -79,7 +78,6 @@ def Command_CameraPan(en: st.Entity, azimuth_deg: float, elevation_deg: float, t
     return cmd
 
 def Command_CaptureImage(en: st.Entity, exposure: float, task_id: str):
-    raise NotImplementedError("CaptureImage is currently causing crashes and disabled in the competitor API")
     cmd = Command("CaptureImage", en)
     cmd.payload.AddParam(st.VarType.string, "TaskID", task_id)
     cmd.payload.AddParam(st.VarType.double, "Exposure", exposure)

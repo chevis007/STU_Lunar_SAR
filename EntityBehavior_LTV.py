@@ -13,7 +13,7 @@ import numpy as np
 #################################################################
 
 from API.STU_Common import Command, _commandID_Str
-import API.EntityBehaviorFuncs as EB #TODO
+import API.EntityBehaviorFuncs as EB
 import API.EntityTelemetry as ET
 import API.SurfaceMovement as SM
 
@@ -89,29 +89,25 @@ en_behavior.OnCommandReceived("CameraPan", CameraPan_Received)
 def On_CameraCapDone( orig_command: Command,
                      captureID: int, 
                      capturedImage: st.CapturedImage):
-    st.OnScreenLogMessage("Debug: On_CameraCapDone", "Entity Behavior", st.Severity.Warning)
-    first_pixel = capturedImage.PixelsR[0]
-    st.OnScreenLogMessage(f"Camera capture done; first red pixel value: " + str(first_pixel), "LTV Behavior", st.Severity.Info)
+    # first_pixel = capturedImage.PixelsR[0]
+    # st.OnScreenLogMessage(f"Camera capture done; first red pixel value: " + str(first_pixel), "LTV Behavior", st.Severity.Info)
 
-    # payload = st.ParamMap()
-    # payload.AddParamArray(st.VarType.uint8, "PixelsR", capturedImage.PixelsR)
-    # payload.AddParamArray(st.VarType.uint8, "PixelsG", capturedImage.PixelsG)
-    # payload.AddParamArray(st.VarType.uint8, "PixelsB", capturedImage.PixelsB)
-    # payload.AddParam(st.VarType.int32, "ResolutionX", capturedImage.properties.ResolutionX)
-    # payload.AddParam(st.VarType.int32, "ResolutionY", capturedImage.properties.ResolutionY)
-    # payload.AddParam(st.VarType.double, "Exposure", capturedImage.properties.EV)
-    # payload.AddParam(st.VarType.double, "FOV", capturedImage.properties.FOV)
-    # en_behavior.CompleteCommand("CaptureImage", payload)
+    payload = st.ParamMap()
+    payload.AddParamArray(st.VarType.uint8, "PixelsR", capturedImage.PixelsR)
+    payload.AddParamArray(st.VarType.uint8, "PixelsG", capturedImage.PixelsG)
+    payload.AddParamArray(st.VarType.uint8, "PixelsB", capturedImage.PixelsB)
+    payload.AddParam(st.VarType.int32, "ResolutionX", capturedImage.properties.ResolutionX)
+    payload.AddParam(st.VarType.int32, "ResolutionY", capturedImage.properties.ResolutionY)
+    payload.AddParam(st.VarType.double, "Exposure", capturedImage.properties.EV)
+    payload.AddParam(st.VarType.double, "FOV", capturedImage.properties.FOV)
+    en_behavior.CompleteCommand("CaptureImage", payload)
 
 # CaptureImage command handling
 def CaptureImage_Received(command: Command):
-    st.OnScreenLogMessage("Debug: CaptureImage_Received", "Entity Behavior", st.Severity.Warning)
     payload: st.ParamMap = command.payload
     exposure = payload.GetParam(st.VarType.double, "Exposure")
     capture_id = en_behavior.CameraCapture(exposure)
-    st.logger_warn(f"Debug: CaptureImage_Received capture_id {capture_id}")
     st.OnImageReceived(capture_id, lambda capturedImage: On_CameraCapDone(command, capture_id, capturedImage))
-    st.logger_warn("Debug: CaptureImage_Received ended")
 
 en_behavior.OnCommandReceived("CaptureImage", CaptureImage_Received)
 

@@ -301,15 +301,15 @@
             "Azimuth": 0.0,
             "ArrivalTolerance": 0.5,
             "SpeedSlopeCurve": {
-              "a": 5.6,
+              "a": 4.8,
               "b": 25.0,
-              "c": 1.4
+              "c": 1.2
             },
             "PowerConsumptionSlopeCurve": {
-              "a": 800.0,
-              "b": 77.0,
-              "c": 13.0,
-              "d": 150.0
+              "a": 1200.0,
+              "b": 222.0,
+              "c": 49.0,
+              "d": 1000.0
             },
             "Resources": {
               "currentPower": 500000.0,
@@ -320,6 +320,7 @@
               "MinPowerReq": 200.0
             },
             "Scanner": ["EntityRef", "LTV1_Scanner"],
+            "CamScanner": ["EntityRef", "LTV1_CamScanner"],
             "Battery": ["EntityRef", "LTV1_Battery"],
             "Camera": ["EntityRef", "LTV1_Camera"]
           }
@@ -449,15 +450,15 @@
             "Azimuth": 0.0,
             "ArrivalTolerance": 0.5,
             "SpeedSlopeCurve": {
-              "a": 5.6,
+              "a": 4.8,
               "b": 25.0,
-              "c": 1.4
+              "c": 1.2
             },
             "PowerConsumptionSlopeCurve": {
-              "a": 800.0,
-              "b": 77.0,
-              "c": 13.0,
-              "d": 150.0
+              "a": 1200.0,
+              "b": 222.0,
+              "c": 49.0,
+              "d": 1000.0
             },
             "Resources": {
               "currentPower": 500000.0,
@@ -468,6 +469,7 @@
               "MinPowerReq": 200.0
             },
             "Scanner": ["EntityRef", "LTV2_Scanner"],
+            "CamScanner": ["EntityRef", "LTV2_CamScanner"],
             "Battery": ["EntityRef", "LTV2_Battery"],
             "Camera": ["EntityRef", "LTV2_Camera"]
           }
@@ -577,7 +579,7 @@
               "ResidentFrame": [ "EntityRef", "Moon" ]
             },
             "HasComms": true,
-            "Height": -0.22,
+            "Height": 0.0,
             "AlignToSurfaceNormal": true,
             "OldLocation": [ "doubleV3", 0.0, 0.0, 0.0 ],
             "RoverDisplacement_cm": 0.0,
@@ -587,15 +589,15 @@
             "Azimuth": 0.0,
             "ArrivalTolerance": 0.5,
             "SpeedSlopeCurve": {
-              "a": 8.0,
-              "b": 5.0,
-              "c": 2.0
+              "a": 5.6,
+              "b": 25.0,
+              "c": 1.4
             },
             "PowerConsumptionSlopeCurve": {
-              "a": 300.0,
-              "b": 0.0,
-              "c": 10.0,
-              "d": 70.0
+              "a": 750.0,
+              "b": 106.0,
+              "c": 21.0,
+              "d": 100.0
             },
             "Resources": {
               "currentPower": 500000.0,
@@ -606,8 +608,9 @@
               "MinPowerReq": 50.0
             },
             "Scanner": ["EntityRef", "ScoutRover1_Scanner"],
+            "CamScanner": ["EntityRef", "ScoutRover1_CamScanner"],
             "Battery": ["EntityRef", "ScoutRover1_Battery"],
-            "Camera": ["EntityRef", "Scout1_Camera"]
+            "Camera": ["EntityRef", "ScoutRover1_Camera"]
           }
         }
       },
@@ -643,7 +646,7 @@
               "ResidentFrame": [ "EntityRef", "Moon" ]
             },
             "HasComms": true,
-            "Height": -0.22,
+            "Height": 0.0,
             "AlignToSurfaceNormal": true,
             "OldLocation": [ "doubleV3", 0.0, 0.0, 0.0 ],
             "RoverDisplacement_cm": 0.0,
@@ -653,15 +656,15 @@
             "Azimuth": 0.0,
             "ArrivalTolerance": 0.5,
             "SpeedSlopeCurve": {
-              "a": 8.0,
-              "b": 5.0,
-              "c": 2.0
+              "a": 5.6,
+              "b": 25.0,
+              "c": 1.4
             },
             "PowerConsumptionSlopeCurve": {
-              "a": 300.0,
-              "b": 0.0,
-              "c": 10.0,
-              "d": 70.0
+              "a": 750.0,
+              "b": 106.0,
+              "c": 21.0,
+              "d": 100.0
             },
             "Resources": {
               "currentPower": 500000.0,
@@ -672,8 +675,9 @@
               "MinPowerReq": 50.0
             },
             "Scanner": ["EntityRef", "ScoutRover2_Scanner"],
+            "CamScanner": ["EntityRef", "ScoutRover2_CamScanner"],
             "Battery": ["EntityRef", "ScoutRover2_Battery"],
-            "Camera": ["EntityRef", "Scout2_Camera"]
+            "Camera": ["EntityRef", "ScoutRover2_Camera"]
           }
         }
       },
@@ -696,6 +700,508 @@
       },
       {
         "#Required": {
+          "Name": "SamplingRover",
+          "Type": "FromTemplate",
+          "Systems": [ "ParamWrangler", "SimpleWheels", "SurfaceMovement" ]
+        },
+        "#FromTemplate": {
+          "Source_Path": "SharedData/SCAssets/LandVehicles/SamplingRover.json",
+          "ParamOverrides": {
+            "Location": [ "doubleV3", -12855.0, -12780.0, -1739192.0 ],
+            "Rotation": [ "doubleV4", 0.9848078, 0, 0, 0.1736482 ],
+            "Dynamics": {
+              "ResidentFrame": [ "EntityRef", "Moon" ]
+            },
+            "HasComms": true,
+            "AlignToSurfaceNormal": true,
+            "OldLocation": [ "doubleV3", 0.0, 0.0, 0.0 ],
+            "RoverDisplacement_cm": 0.0,
+            "Speed": 8.0,
+            "PowerConsumptionIdle": 200.0,
+            "State": "Loiter",
+            "Azimuth": 0.0,
+            "ArrivalTolerance": 0.5,
+            "SpeedSlopeCurve": {
+              "a": 2.4,
+              "b": 25.0,
+              "c": 0.6
+            },
+            "PowerConsumptionSlopeCurve": {
+              "a": 800.0,
+              "b": 77.0,
+              "c": 13.0,
+              "d": 150.0
+            },
+            "Resources": {
+              "currentPower": 500000.0,
+              "PowerType": "Sink",
+              "Power_Consumption": 300.0,
+              "IsPowered": true,
+              "PowerRatio": 0,
+              "MinPowerReq": 50.0
+            },
+            "Scanner": ["EntityRef", "SamplingRover_Scanner"],
+            "Battery": ["EntityRef", "SamplingRover_Battery"],
+            "Camera": ["EntityRef", "SamplingRover_Camera"],
+            "NumWheels": [ "int32", 8],
+            "Wheels": {
+              "Wheel1": [ "EntityRef", "SamplingRoverWheel1" ],
+              "Wheel2": [ "EntityRef", "SamplingRoverWheel2" ],
+              "Wheel3": [ "EntityRef", "SamplingRoverWheel3" ],
+              "Wheel4": [ "EntityRef", "SamplingRoverWheel4" ],
+              "Wheel5": [ "EntityRef", "SamplingRoverWheel5" ],
+              "Wheel6": [ "EntityRef", "SamplingRoverWheel6" ],
+              "Wheel7": [ "EntityRef", "SamplingRoverWheel7" ],
+              "Wheel8": [ "EntityRef", "SamplingRoverWheel8" ]
+            }
+          }
+        }
+      },
+      {
+        "#Required": {
+          "Name": "SamplingRoverWheel1",
+          "Type": "BP",
+          "Systems": []
+        },
+        "#BP": { "BP_Path": "/Game/SpaceCraft_UI/UI_Pawn/Rover/IACRoverWheel1.IACRoverWheel1_C" },
+        "Dynamics": {
+          "PropagationType": "ComputeAcceleration",
+          "InterpolationType": "NoInterpolation",
+          "ControlledObject": false,
+          "GenerateCollider": false,
+          "IsRebaseCenter": false,
+          "Mass": 50.0,
+          "K_spring": 28000.0,
+          "C_spring": 2500.0,
+          "K_wheel": 500000.0,
+          "C_wheel": 15020.0,
+          "mu_friction": 0.5,
+          "WheelDisplacement": [ "doubleV3", 1.333333, 0.768666, -0.233333 ],
+          "ResidentFrame": [ "EntityRef", "SamplingRover" ]
+        },
+        "Graphics": {
+          "Scale": 1.0,
+          "RenderFar": true,
+          "IsLightSource": false
+        },
+        "Location": [ "doubleV3", 1.333333, 0.768666, -0.233333 ],
+        "Rotation": [ "doubleV4", 0.0, 0.0, 0.0, 1.0 ],
+        "Velocity": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "AngVelocity": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "Acceleration": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "AngAcceleration": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "WheelRadius": 0.266666,
+        "WheelOffset": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "SurfaceNormal": [ "doubleV3", 0.0, 0.0, 1.0 ]
+      },
+      {
+        "#Required": {
+          "Name": "SamplingRoverWheel2",
+          "Type": "BP",
+          "Systems": []
+        },
+        "#BP": { "BP_Path": "/Game/SpaceCraft_UI/UI_Pawn/Rover/IACRoverWheel2.IACRoverWheel2_C" },
+        "Dynamics": {
+          "PropagationType": "ComputeAcceleration",
+          "InterpolationType": "NoInterpolation",
+          "ControlledObject": false,
+          "GenerateCollider": false,
+          "IsRebaseCenter": false,
+          "Mass": 50.0,
+          "K_spring": 28000.0,
+          "C_spring": 2500.0,
+          "K_wheel": 500000.0,
+          "C_wheel": 15020.0,
+          "mu_friction": 0.5,
+          "WheelDisplacement": [ "doubleV3", 0.666666, 0.768666, -0.233333 ],
+          "ResidentFrame": [ "EntityRef", "SamplingRover" ]
+        },
+        "Graphics": {
+          "Scale": 1.0,
+          "RenderFar": true,
+          "IsLightSource": false
+        },
+        "Location": [ "doubleV3", 0.666666, 0.768666, -0.233333 ],
+        "Rotation": [ "doubleV4", 0.0, 0.0, 0.0, 1.0 ],
+        "Velocity": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "AngVelocity": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "Acceleration": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "AngAcceleration": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "WheelRadius": 0.266666,
+        "WheelOffset": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "SurfaceNormal": [ "doubleV3", 0.0, 0.0, 1.0 ]
+      },
+      {
+        "#Required": {
+          "Name": "SamplingRoverWheel3",
+          "Type": "BP",
+          "Systems": []
+        },
+        "#BP": { "BP_Path": "/Game/SpaceCraft_UI/UI_Pawn/Rover/IACRoverWheel3.IACRoverWheel3_C" },
+        "Dynamics": {
+          "PropagationType": "ComputeAcceleration",
+          "InterpolationType": "NoInterpolation",
+          "ControlledObject": false,
+          "GenerateCollider": false,
+          "IsRebaseCenter": false,
+          "Mass": 50.0,
+          "K_spring": 28000.0,
+          "C_spring": 2500.0,
+          "K_wheel": 500000.0,
+          "C_wheel": 15020.0,
+          "mu_friction": 0.5,
+          "WheelDisplacement": [ "doubleV3", -0.666666, 0.768666, -0.233333 ],
+          "ResidentFrame": [ "EntityRef", "SamplingRover" ]
+        },
+        "Graphics": {
+          "Scale": 1.0,
+          "RenderFar": true,
+          "IsLightSource": false
+        },
+        "Location": [ "doubleV3", -0.666666, 0.768666, -0.233333 ],
+        "Rotation": [ "doubleV4", 0.0, 0.0, 0.0, 1.0 ],
+        "Velocity": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "AngVelocity": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "Acceleration": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "AngAcceleration": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "WheelRadius": 0.266666,
+        "WheelOffset": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "SurfaceNormal": [ "doubleV3", 0.0, 0.0, 1.0 ]
+      },
+      {
+        "#Required": {
+          "Name": "SamplingRoverWheel4",
+          "Type": "BP",
+          "Systems": []
+        },
+        "#BP": { "BP_Path": "/Game/SpaceCraft_UI/UI_Pawn/Rover/IACRoverWheel4.IACRoverWheel4_C" },
+        "Dynamics": {
+          "PropagationType": "ComputeAcceleration",
+          "InterpolationType": "NoInterpolation",
+          "ControlledObject": false,
+          "GenerateCollider": false,
+          "IsRebaseCenter": false,
+          "Mass": 50.0,
+          "K_spring": 28000.0,
+          "C_spring": 2500.0,
+          "K_wheel": 500000.0,
+          "C_wheel": 15020.0,
+          "mu_friction": 0.5,
+          "WheelDisplacement": [ "doubleV3", -1.333333, 0.768666, -0.233333 ],
+          "ResidentFrame": [ "EntityRef", "SamplingRover" ]
+        },
+        "Graphics": {
+          "Scale": 1.0,
+          "RenderFar": true,
+          "IsLightSource": false
+        },
+        "Location": [ "doubleV3", -1.333333, 0.768666, -0.233333 ],
+        "Rotation": [ "doubleV4", 0.0, 0.0, 0.0, 1.0 ],
+        "Velocity": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "AngVelocity": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "Acceleration": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "AngAcceleration": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "WheelRadius": 0.266666,
+        "WheelOffset": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "SurfaceNormal": [ "doubleV3", 0.0, 0.0, 1.0 ]
+      },
+      {
+        "#Required": {
+          "Name": "SamplingRoverWheel5",
+          "Type": "BP",
+          "Systems": []
+        },
+        "#BP": { "BP_Path": "/Game/SpaceCraft_UI/UI_Pawn/Rover/IACRoverWheel5.IACRoverWheel5_C" },
+        "Dynamics": {
+          "PropagationType": "ComputeAcceleration",
+          "InterpolationType": "NoInterpolation",
+          "ControlledObject": false,
+          "GenerateCollider": false,
+          "IsRebaseCenter": false,
+          "Mass": 50.0,
+          "K_spring": 28000.0,
+          "C_spring": 2500.0,
+          "K_wheel": 500000.0,
+          "C_wheel": 15020.0,
+          "mu_friction": 0.5,
+          "WheelDisplacement": [ "doubleV3", 1.333333, -0.768666, -0.233333 ],
+          "ResidentFrame": [ "EntityRef", "SamplingRover" ]
+        },
+        "Graphics": {
+          "Scale": 1.0,
+          "RenderFar": true,
+          "IsLightSource": false
+        },
+        "Location": [ "doubleV3", 1.333333, -0.768666, -0.233333 ],
+        "Rotation": [ "doubleV4", 0.0, 0.0, 0.0, 1.0 ],
+        "Velocity": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "AngVelocity": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "Acceleration": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "AngAcceleration": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "WheelRadius": 0.266666,
+        "WheelOffset": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "SurfaceNormal": [ "doubleV3", 0.0, 0.0, 1.0 ]
+      },
+      {
+        "#Required": {
+          "Name": "SamplingRoverWheel6",
+          "Type": "BP",
+          "Systems": []
+        },
+        "#BP": { "BP_Path": "/Game/SpaceCraft_UI/UI_Pawn/Rover/IACRoverWheel6.IACRoverWheel6_C" },
+        "Dynamics": {
+          "PropagationType": "ComputeAcceleration",
+          "InterpolationType": "NoInterpolation",
+          "ControlledObject": false,
+          "GenerateCollider": false,
+          "IsRebaseCenter": false,
+          "Mass": 50.0,
+          "K_spring": 28000.0,
+          "C_spring": 2500.0,
+          "K_wheel": 500000.0,
+          "C_wheel": 15020.0,
+          "mu_friction": 0.5,
+          "WheelDisplacement": [ "doubleV3", 0.666666, -0.768666, -0.233333 ],
+          "ResidentFrame": [ "EntityRef", "SamplingRover" ]
+        },
+        "Graphics": {
+          "Scale": 1.0,
+          "RenderFar": true,
+          "IsLightSource": false
+        },
+        "Location": [ "doubleV3", 0.666666, -0.768666, -0.233333 ],
+        "Rotation": [ "doubleV4", 0.0, 0.0, 0.0, 1.0 ],
+        "Velocity": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "AngVelocity": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "Acceleration": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "AngAcceleration": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "WheelRadius": 0.266666,
+        "WheelOffset": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "SurfaceNormal": [ "doubleV3", 0.0, 0.0, 1.0 ]
+      },
+      {
+        "#Required": {
+          "Name": "SamplingRoverWheel7",
+          "Type": "BP",
+          "Systems": []
+        },
+        "#BP": { "BP_Path": "/Game/SpaceCraft_UI/UI_Pawn/Rover/IACRoverWheel7.IACRoverWheel7_C" },
+        "Dynamics": {
+          "PropagationType": "ComputeAcceleration",
+          "InterpolationType": "NoInterpolation",
+          "ControlledObject": false,
+          "GenerateCollider": false,
+          "IsRebaseCenter": false,
+          "Mass": 50.0,
+          "K_spring": 28000.0,
+          "C_spring": 2500.0,
+          "K_wheel": 500000.0,
+          "C_wheel": 15020.0,
+          "mu_friction": 0.5,
+          "WheelDisplacement": [ "doubleV3", -0.666666, -0.768666, -0.233333 ],
+          "ResidentFrame": [ "EntityRef", "SamplingRover" ]
+        },
+        "Graphics": {
+          "Scale": 1.0,
+          "RenderFar": true,
+          "IsLightSource": false
+        },
+        "Location": [ "doubleV3", -0.666666, -0.768666, -0.233333 ],
+        "Rotation": [ "doubleV4", 0.0, 0.0, 0.0, 1.0 ],
+        "Velocity": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "AngVelocity": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "Acceleration": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "AngAcceleration": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "WheelRadius": 0.266666,
+        "WheelOffset": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "SurfaceNormal": [ "doubleV3", 0.0, 0.0, 1.0 ]
+      },
+      {
+        "#Required": {
+          "Name": "SamplingRoverWheel8",
+          "Type": "BP",
+          "Systems": []
+        },
+        "#BP": { "BP_Path": "/Game/SpaceCraft_UI/UI_Pawn/Rover/IACRoverWheel8.IACRoverWheel8_C" },
+        "Dynamics": {
+          "PropagationType": "ComputeAcceleration",
+          "InterpolationType": "NoInterpolation",
+          "ControlledObject": false,
+          "GenerateCollider": false,
+          "IsRebaseCenter": false,
+          "Mass": 50.0,
+          "K_spring": 28000.0,
+          "C_spring": 2500.0,
+          "K_wheel": 500000.0,
+          "C_wheel": 15020.0,
+          "mu_friction": 0.5,
+          "WheelDisplacement": [ "doubleV3", -1.333333, -0.768666, -0.233333 ],
+          "ResidentFrame": [ "EntityRef", "SamplingRover" ]
+        },
+        "Graphics": {
+          "Scale": 1.0,
+          "RenderFar": true,
+          "IsLightSource": false
+        },
+        "Location": [ "doubleV3", -1.333333, -0.768666, -0.233333 ],
+        "Rotation": [ "doubleV4", 0.0, 0.0, 0.0, 1.0 ],
+        "Velocity": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "AngVelocity": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "Acceleration": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "AngAcceleration": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "WheelRadius": 0.266666,
+        "WheelOffset": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "SurfaceNormal": [ "doubleV3", 0.0, 0.0, 1.0 ]
+      },
+      {
+        "#Required": {
+          "Name": "SamplingRoverMarker",
+          "Type": "FromTemplate",
+          "Systems": []
+        },
+        "#FromTemplate": {
+          "Source_Path": "SharedData/SCAssets/Basic/ScaledHoloMarker.json",
+          "ParamOverrides": {
+            "Dynamics": { "ResidentFrame": [ "EntityRef", "SamplingRover" ] },
+            "ObjectHeight": 3.0,
+            "MinRenderDist_km": 0.01,
+            "MaxRenderDist_km": 300000.0,
+            "MarkerName": "Sampling Rover"
+          }
+        }
+      },
+      {
+        "#Required": {
+          "Name": "TruckRover",
+          "Type": "FromTemplate",
+          "Systems": [ "ParamWrangler", "SurfaceMovement" ]
+        },
+        "#FromTemplate": {
+          "Source_Path": "SharedData/SCAssets/LandVehicles/TruckRover.json",
+          "ParamOverrides": {
+            "Location": [ "doubleV3", -12845.0, -12750.0, -1739192.0 ],
+            "Rotation": [ "doubleV4", 0.9848078, 0, 0, 0.1736482 ],
+            "Dynamics": {
+              "ResidentFrame": [ "EntityRef", "Moon" ]
+            },
+            "HasComms": true,
+            "AlignToSurfaceNormal": true,
+            "OldLocation": [ "doubleV3", 0.0, 0.0, 0.0 ],
+            "RoverDisplacement_cm": 0.0,
+            "Speed": 8.0,
+            "PowerConsumptionIdle": 200.0,
+            "State": "Loiter",
+            "Azimuth": 0.0,
+            "ArrivalTolerance": 0.5,
+            "SpeedSlopeCurve": {
+              "a": 3.6,
+              "b": 25.0,
+              "c": 0.9
+            },
+            "PowerConsumptionSlopeCurve": {
+              "a": 2515.0,
+              "b": 364.0,
+              "c": 72.0,
+              "d": 3000.0
+            },
+            "Resources": {
+              "currentPower": 500000.0,
+              "PowerType": "Sink",
+              "Power_Consumption": 300.0,
+              "IsPowered": true,
+              "PowerRatio": 0,
+              "MinPowerReq": 50.0
+            },
+            "Scanner": ["EntityRef", "TruckRover_Scanner"],
+            "Battery": ["EntityRef", "TruckRover_Battery"],
+            "Camera": ["EntityRef", "TruckRover_Camera"]
+          }
+        }
+      },
+      {
+        "#Required": {
+          "Name": "TruckRoverMarker",
+          "Type": "FromTemplate",
+          "Systems": []
+        },
+        "#FromTemplate": {
+          "Source_Path": "SharedData/SCAssets/Basic/ScaledHoloMarker.json",
+          "ParamOverrides": {
+            "Dynamics": { "ResidentFrame": [ "EntityRef", "TruckRover" ] },
+            "ObjectHeight": 3.0,
+            "MinRenderDist_km": 0.01,
+            "MaxRenderDist_km": 300000.0,
+            "MarkerName": "Truck Rover"
+          }
+        }
+      },
+      {
+        "#Required": {
+          "Name": "ExcavatorRover",
+          "Type": "FromTemplate",
+          "Systems": [ "ParamWrangler", "SurfaceMovement" ]
+        },
+        "#FromTemplate": {
+          "Source_Path": "SharedData/SCAssets/LandVehicles/ExcavatorRover.json",
+          "ParamOverrides": {
+            "Location": [ "doubleV3", -12870.0, -12800.0, -1739192.0 ],
+            "Rotation": [ "doubleV4", 0.9848078, 0, 0, 0.1736482 ],
+            "Dynamics": {
+              "ResidentFrame": [ "EntityRef", "Moon" ]
+            },
+            "HasComms": true,
+            "AlignToSurfaceNormal": true,
+            "OldLocation": [ "doubleV3", 0.0, 0.0, 0.0 ],
+            "RoverDisplacement_cm": 0.0,
+            "Speed": 8.0,
+            "PowerConsumptionIdle": 200.0,
+            "State": "Loiter",
+            "Azimuth": 0.0,
+            "ArrivalTolerance": 0.5,
+            "SpeedSlopeCurve": {
+              "a": 3.2,
+              "b": 25.0,
+              "c": 0.8
+            },
+            "PowerConsumptionSlopeCurve": {
+              "a": 1515.0,
+              "b": 264.0,
+              "c": 42.0,
+              "d": 2000.0
+            },
+            "Resources": {
+              "currentPower": 500000.0,
+              "PowerType": "Sink",
+              "Power_Consumption": 300.0,
+              "IsPowered": true,
+              "PowerRatio": 0,
+              "MinPowerReq": 50.0
+            },
+            "Scanner": ["EntityRef", "ExcavatorRover_Scanner"],
+            "Battery": ["EntityRef", "ExcavatorRover_Battery"],
+            "Camera": ["EntityRef", "ExcavatorRover_Camera"]
+          }
+        }
+      },
+      {
+        "#Required": {
+          "Name": "ExcavatorRoverMarker",
+          "Type": "FromTemplate",
+          "Systems": []
+        },
+        "#FromTemplate": {
+          "Source_Path": "SharedData/SCAssets/Basic/ScaledHoloMarker.json",
+          "ParamOverrides": {
+            "Dynamics": { "ResidentFrame": [ "EntityRef", "ExcavatorRover" ] },
+            "ObjectHeight": 3.0,
+            "MinRenderDist_km": 0.01,
+            "MaxRenderDist_km": 300000.0,
+            "MarkerName": "Excavator Rover"
+          }
+        }
+      },
+      {
+        "#Required": {
           "Type": "Camera",
           "Name": "LTV1_Camera",
           "Systems": []
@@ -710,8 +1216,9 @@
           "RenderFar": true,
           "Scale": 1.0
         },
-        "Location": [ "doubleV3", 0, 0, 1 ],
-        "Rotation": [ "doubleV4", 0,0,0,1 ]
+        "Location": [ "doubleV3", 0.5, 0, 2.2 ],
+        "Rotation": [ "doubleV4", 0, 0, 0, 1 ],
+        "FOV": 50.0
       },
       {
         "#Required": {
@@ -729,13 +1236,14 @@
           "RenderFar": true,
           "Scale": 1.0
         },
-        "Location": [ "doubleV3", 0, 0, 1 ],
-        "Rotation": [ "doubleV4", 0,0,0,1 ]
+        "Location": [ "doubleV3", 0.5, 0, 2.2 ],
+        "Rotation": [ "doubleV4", 0, 0, 0,1 ],
+        "FOV": 50.0
       },
       {
         "#Required": {
           "Type": "Camera",
-          "Name": "Scout1_Camera",
+          "Name": "ScoutRover1_Camera",
           "Systems": []
         },
         "Dynamics": {
@@ -748,13 +1256,14 @@
           "RenderFar": true,
           "Scale": 1.0
         },
-        "Location": [ "doubleV3", 0, 0, 1 ],
-        "Rotation": [ "doubleV4", 0,0,0,1 ]
+        "Location": [ "doubleV3", 0.3, 0, 1.2 ],
+        "Rotation": [ "doubleV4", 0, 0, 0, 1 ],
+        "FOV": 30.0
       },
       {
         "#Required": {
           "Type": "Camera",
-          "Name": "Scout2_Camera",
+          "Name": "ScoutRover2_Camera",
           "Systems": []
         },
         "Dynamics": {
@@ -767,8 +1276,69 @@
           "RenderFar": true,
           "Scale": 1.0
         },
+        "Location": [ "doubleV3", 0.3, 0, 1.2 ],
+        "Rotation": [ "doubleV4", 0, 0, 0, 1 ],
+        "FOV": 30.0
+      },
+      {
+        "#Required": {
+          "Type": "Camera",
+          "Name": "TruckRover_Camera",
+          "Systems": []
+        },
+        "Dynamics": {
+          "PropagationType": "ComputeAcceleration",
+          "GenerateCollider": false,
+          "Mass": 1.0,
+          "ResidentFrame": [ "EntityRef", "TruckRover" ]
+        },
+        "Graphics": {
+          "RenderFar": true,
+          "Scale": 1.0
+        },
+        "Location": [ "doubleV3", 0, 0, 2 ],
+        "Rotation": [ "doubleV4", 0, 0, 0, 1 ],
+        "FOV": 50.0
+      },
+      {
+        "#Required": {
+          "Type": "Camera",
+          "Name": "ExcavatorRover_Camera",
+          "Systems": []
+        },
+        "Dynamics": {
+          "PropagationType": "ComputeAcceleration",
+          "GenerateCollider": false,
+          "Mass": 1.0,
+          "ResidentFrame": [ "EntityRef", "ExcavatorRover" ]
+        },
+        "Graphics": {
+          "RenderFar": true,
+          "Scale": 1.0
+        },
+        "Location": [ "doubleV3", 0, 0, 3 ],
+        "Rotation": [ "doubleV4", 0, 0, 0, 1 ],
+        "FOV": 50.0
+      },
+      {
+        "#Required": {
+          "Type": "Camera",
+          "Name": "SamplingRover_Camera",
+          "Systems": []
+        },
+        "Dynamics": {
+          "PropagationType": "ComputeAcceleration",
+          "GenerateCollider": false,
+          "Mass": 1.0,
+          "ResidentFrame": [ "EntityRef", "SamplingRover" ]
+        },
+        "Graphics": {
+          "RenderFar": true,
+          "Scale": 1.0
+        },
         "Location": [ "doubleV3", 0, 0, 1 ],
-        "Rotation": [ "doubleV4", 0,0,0,1 ]
+        "Rotation": [ "doubleV4", 0, 0, 0, 1 ],
+        "FOV": 50.0
       },
       {
         "#Required": {
@@ -808,6 +1378,52 @@
           "LTV1_Headlight"
         ],
         "ScanRadius_m": 20.0,
+        "Target": [ "EntityRef", "CrashedLunarLander" ],
+        "TargetLocation": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "TargetFound": false,
+        "DoScan": true,
+        "RelVecsAndRadii": ["array", "doubleV4"]
+      },
+      {
+        "#Required": {
+          "Type": "BP",
+          "Name": "LTV1_CamScanner",
+          "Systems": [ "ParamWrangler"]
+        },
+        "#BP": {
+          "BP_Path": "/Game/Prebuilt_BPs/GeometryTracer/E_TraceForObjects.E_TraceForObjects_C"
+        },
+        "Dynamics": {
+          "PropagationType": "ComputeVelocity",
+          "GenerateCollider": false,
+          "Mass": 1.0,
+          "ResidentFrame": [ "EntityRef", "LTV1_Camera" ]
+        },
+        "Graphics": {
+          "RenderFar": true,
+          "Scale": 1.0,
+          "IsLightSource": false
+        },
+        "Location": [ "doubleV3", 0, 0, 0 ],
+        "Rotation": [ "doubleV4", 0,0,0,1 ],
+        "Velocity": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "Acceleration": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "AngVelocity": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "AngAcceleration": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "IgnoreInScan": ["array", "EntityRef", 
+          "LTV1", 
+          "LTV_Wheel1", 
+          "LTV_Wheel2", 
+          "LTV_Wheel3", 
+          "LTV_Wheel4",
+          "LTV1Marker",
+          "LTV1_Scanner",
+          "LTV1_Battery",
+          "LTV1_Headlight"
+        ],
+        "ScanRadius_m": 20.0,
+        "TraceShape": "Cone",
+        "TraceConeAngle_deg": 25.0,
         "Target": [ "EntityRef", "CrashedLunarLander" ],
         "TargetLocation": [ "doubleV3", 0.0, 0.0, 0.0 ],
         "TargetFound": false,
@@ -861,6 +1477,52 @@
       {
         "#Required": {
           "Type": "BP",
+          "Name": "LTV2_CamScanner",
+          "Systems": [ "ParamWrangler"]
+        },
+        "#BP": {
+          "BP_Path": "/Game/Prebuilt_BPs/GeometryTracer/E_TraceForObjects.E_TraceForObjects_C"
+        },
+        "Dynamics": {
+          "PropagationType": "ComputeVelocity",
+          "GenerateCollider": false,
+          "Mass": 1.0,
+          "ResidentFrame": [ "EntityRef", "LTV2_Camera" ]
+        },
+        "Graphics": {
+          "RenderFar": true,
+          "Scale": 1.0,
+          "IsLightSource": false
+        },
+        "Location": [ "doubleV3", 0, 0, 0 ],
+        "Rotation": [ "doubleV4", 0,0,0,1 ],
+        "Velocity": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "Acceleration": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "AngVelocity": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "AngAcceleration": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "IgnoreInScan": ["array", "EntityRef", 
+          "LTV2", 
+          "LTV_Wheel5", 
+          "LTV_Wheel6", 
+          "LTV_Wheel7", 
+          "LTV_Wheel8",
+          "LTV2Marker",
+          "LTV2_Scanner",
+          "LTV2_Battery",
+          "LTV2_Headlight"
+        ],
+        "ScanRadius_m": 20.0,
+        "TraceShape": "Cone",
+        "TraceConeAngle_deg": 25.0,
+        "Target": [ "EntityRef", "CrashedLunarLander" ],
+        "TargetLocation": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "TargetFound": false,
+        "DoScan": true,
+        "RelVecsAndRadii": ["array", "doubleV4"]
+      },
+      {
+        "#Required": {
+          "Type": "BP",
           "Name": "ScoutRover1_Scanner",
           "Systems": [ "ParamWrangler"]
         },
@@ -900,6 +1562,47 @@
       {
         "#Required": {
           "Type": "BP",
+          "Name": "ScoutRover1_CamScanner",
+          "Systems": [ "ParamWrangler"]
+        },
+        "#BP": {
+          "BP_Path": "/Game/Prebuilt_BPs/GeometryTracer/E_TraceForObjects.E_TraceForObjects_C"
+        },
+        "Dynamics": {
+          "PropagationType": "ComputeVelocity",
+          "GenerateCollider": false,
+          "Mass": 1.0,
+          "ResidentFrame": [ "EntityRef", "ScoutRover1_Camera" ]
+        },
+        "Graphics": {
+          "RenderFar": true,
+          "Scale": 1.0,
+          "IsLightSource": false
+        },
+        "Location": [ "doubleV3", 0, 0, 0 ],
+        "Rotation": [ "doubleV4", 0,0,0,1 ],
+        "Velocity": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "Acceleration": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "AngVelocity": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "AngAcceleration": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "IgnoreInScan": ["array", "EntityRef",
+          "ScoutRover1",
+          "ScoutRover1_Scanner",
+          "ScoutRover1_Headlight",
+          "ScoutRover1_Battery"
+         ],
+        "ScanRadius_m": 40.0,
+        "TraceShape": "Cone",
+        "TraceConeAngle_deg": 15.0,
+        "Target": [ "EntityRef", "CrashedLunarLander" ],
+        "TargetLocation": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "TargetFound": false,
+        "DoScan": true,
+        "RelVecsAndRadii": ["array", "doubleV4"]
+      },
+      {
+        "#Required": {
+          "Type": "BP",
           "Name": "ScoutRover2_Scanner",
           "Systems": [ "ParamWrangler"]
         },
@@ -928,6 +1631,172 @@
           "ScoutRover2_Scanner",
           "ScoutRover2_Headlight",
           "ScoutRover2_Battery"
+        ],
+        "ScanRadius_m": 10.0,
+        "Target": [ "EntityRef", "CrashedLunarLander" ],
+        "TargetLocation": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "TargetFound": false,
+        "DoScan": true,
+        "RelVecsAndRadii": ["array", "doubleV4"]
+      },
+      {
+        "#Required": {
+          "Type": "BP",
+          "Name": "ScoutRover2_CamScanner",
+          "Systems": [ "ParamWrangler"]
+        },
+        "#BP": {
+          "BP_Path": "/Game/Prebuilt_BPs/GeometryTracer/E_TraceForObjects.E_TraceForObjects_C"
+        },
+        "Dynamics": {
+          "PropagationType": "ComputeVelocity",
+          "GenerateCollider": false,
+          "Mass": 1.0,
+          "ResidentFrame": [ "EntityRef", "ScoutRover2_Camera" ]
+        },
+        "Graphics": {
+          "RenderFar": true,
+          "Scale": 1.0,
+          "IsLightSource": false
+        },
+        "Location": [ "doubleV3", 0, 0, 0 ],
+        "Rotation": [ "doubleV4", 0,0,0,1 ],
+        "Velocity": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "Acceleration": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "AngVelocity": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "AngAcceleration": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "IgnoreInScan": ["array", "EntityRef",
+          "ScoutRover2",
+          "ScoutRover2_Scanner",
+          "ScoutRover2_Headlight",
+          "ScoutRover2_Battery"
+        ],
+        "ScanRadius_m": 40.0,
+        "TraceShape": "Cone",
+        "TraceConeAngle_deg": 15.0,
+        "Target": [ "EntityRef", "CrashedLunarLander" ],
+        "TargetLocation": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "TargetFound": false,
+        "DoScan": true,
+        "RelVecsAndRadii": ["array", "doubleV4"]
+      },
+      {
+        "#Required": {
+          "Type": "BP",
+          "Name": "TruckRover_Scanner",
+          "Systems": [ "ParamWrangler"]
+        },
+        "#BP": {
+          "BP_Path": "/Game/Prebuilt_BPs/GeometryTracer/E_TraceForObjects.E_TraceForObjects_C"
+        },
+        "Dynamics": {
+          "PropagationType": "ComputeVelocity",
+          "GenerateCollider": false,
+          "Mass": 1.0,
+          "ResidentFrame": [ "EntityRef", "TruckRover" ]
+        },
+        "Graphics": {
+          "RenderFar": true,
+          "Scale": 1.0,
+          "IsLightSource": false
+        },
+        "Location": [ "doubleV3", 0, 0, 0 ],
+        "Rotation": [ "doubleV4", 0,0,0,1 ],
+        "Velocity": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "Acceleration": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "AngVelocity": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "AngAcceleration": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "IgnoreInScan": ["array", "EntityRef",
+          "TruckRover",
+          "TruckRover_Scanner",
+          "TruckRover_Headlight",
+          "TruckRover_Battery"
+        ],
+        "ScanRadius_m": 10.0,
+        "Target": [ "EntityRef", "CrashedLunarLander" ],
+        "TargetLocation": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "TargetFound": false,
+        "DoScan": true,
+        "RelVecsAndRadii": ["array", "doubleV4"]
+      },
+      {
+        "#Required": {
+          "Type": "BP",
+          "Name": "ExcavatorRover_Scanner",
+          "Systems": [ "ParamWrangler"]
+        },
+        "#BP": {
+          "BP_Path": "/Game/Prebuilt_BPs/GeometryTracer/E_TraceForObjects.E_TraceForObjects_C"
+        },
+        "Dynamics": {
+          "PropagationType": "ComputeVelocity",
+          "GenerateCollider": false,
+          "Mass": 1.0,
+          "ResidentFrame": [ "EntityRef", "ExcavatorRover" ]
+        },
+        "Graphics": {
+          "RenderFar": true,
+          "Scale": 1.0,
+          "IsLightSource": false
+        },
+        "Location": [ "doubleV3", 0, 0, 0 ],
+        "Rotation": [ "doubleV4", 0,0,0,1 ],
+        "Velocity": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "Acceleration": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "AngVelocity": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "AngAcceleration": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "IgnoreInScan": ["array", "EntityRef",
+          "ExcavatorRover",
+          "ExcavatorRover_Scanner",
+          "ExcavatorRover_Headlight",
+          "ExcavatorRover_Battery"
+        ],
+        "ScanRadius_m": 10.0,
+        "Target": [ "EntityRef", "CrashedLunarLander" ],
+        "TargetLocation": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "TargetFound": false,
+        "DoScan": true,
+        "RelVecsAndRadii": ["array", "doubleV4"]
+      },
+      {
+        "#Required": {
+          "Type": "BP",
+          "Name": "SamplingRover_Scanner",
+          "Systems": [ "ParamWrangler"]
+        },
+        "#BP": {
+          "BP_Path": "/Game/Prebuilt_BPs/GeometryTracer/E_TraceForObjects.E_TraceForObjects_C"
+        },
+        "Dynamics": {
+          "PropagationType": "ComputeVelocity",
+          "GenerateCollider": false,
+          "Mass": 1.0,
+          "ResidentFrame": [ "EntityRef", "SamplingRover" ]
+        },
+        "Graphics": {
+          "RenderFar": true,
+          "Scale": 1.0,
+          "IsLightSource": false
+        },
+        "Location": [ "doubleV3", 0, 0, 0 ],
+        "Rotation": [ "doubleV4", 0,0,0,1 ],
+        "Velocity": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "Acceleration": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "AngVelocity": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "AngAcceleration": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "IgnoreInScan": ["array", "EntityRef",
+          "SamplingRover",
+          "SamplingRover_Scanner",
+          "SamplingRover_Headlight",
+          "SamplingRover_Battery",
+          "SamplingRoverWheel1",
+          "SamplingRoverWheel2",
+          "SamplingRoverWheel3",
+          "SamplingRoverWheel4",
+          "SamplingRoverWheel5",
+          "SamplingRoverWheel6",
+          "SamplingRoverWheel7",
+          "SamplingRoverWheel8"
         ],
         "ScanRadius_m": 10.0,
         "Target": [ "EntityRef", "CrashedLunarLander" ],
@@ -1019,14 +1888,14 @@
           "PropagationType": "ComputeVelocity",
           "GenerateCollider": false,
           "Mass": 1.0,
-          "ResidentFrame": [ "EntityRef", "ScoutRover1" ]
+          "ResidentFrame": [ "EntityRef", "ScoutRover1_Camera" ]
         },
         "Graphics": {
           "RenderFar": true,
           "Scale": 1.0,
           "IsLightSource": false
         },
-        "Location": [ "doubleV3", 1.0, 0, 0.5 ],
+        "Location": [ "doubleV3", -0.2, 0.0, 0.0 ],
         "Velocity": [ "doubleV3", 0.0, 0.0, 0.0 ],
         "Acceleration": [ "doubleV3", 0.0, 0.0, 0.0 ],
         "Rotation": [ "doubleV4", 0.0, 0.0, 0.0, 1.0 ],
@@ -1054,7 +1923,42 @@
           "PropagationType": "ComputeVelocity",
           "GenerateCollider": false,
           "Mass": 1.0,
-          "ResidentFrame": [ "EntityRef", "ScoutRover2" ]
+          "ResidentFrame": [ "EntityRef", "ScoutRover2_Camera" ]
+        },
+        "Graphics": {
+          "RenderFar": true,
+          "Scale": 1.0,
+          "IsLightSource": false
+        },
+        "Location": [ "doubleV3", -0.2, 0.0, 0.0 ],
+        "Velocity": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "Acceleration": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "Rotation": [ "doubleV4", 0.0, 0.0, 0.0, 1.0 ],
+        "AngVelocity": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "AngAcceleration": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "Sensors": {
+          "Headlight": {
+            "InnerConeAngle_deg": 15.0,
+            "OuterConeAngle_deg": 25.0,
+            "AttenuationRadius_m": 50.0,
+            "Intensity": 200000.0
+          }
+        }
+      },
+      {
+        "#Required": {
+          "Type": "BP",
+          "Name": "TruckRover_Headlight",
+          "Systems": []
+        },
+        "#BP": {
+          "BP_Path": "/Game/Prebuilt_BPs/GeometryTracer/E_Headlight.E_Headlight_C"
+        },
+        "Dynamics": {
+          "PropagationType": "ComputeVelocity",
+          "GenerateCollider": false,
+          "Mass": 1.0,
+          "ResidentFrame": [ "EntityRef", "TruckRover" ]
         },
         "Graphics": {
           "RenderFar": true,
@@ -1069,10 +1973,80 @@
         "AngAcceleration": [ "doubleV3", 0.0, 0.0, 0.0 ],
         "Sensors": {
           "Headlight": {
-            "InnerConeAngle_deg": 15.0,
-            "OuterConeAngle_deg": 25.0,
+            "InnerConeAngle_deg": 45.0,
+            "OuterConeAngle_deg": 60.0,
+            "AttenuationRadius_m": 100.0,
+            "Intensity": 500000.0
+          }
+        }
+      },
+      {
+        "#Required": {
+          "Type": "BP",
+          "Name": "ExcavatorRover_Headlight",
+          "Systems": []
+        },
+        "#BP": {
+          "BP_Path": "/Game/Prebuilt_BPs/GeometryTracer/E_Headlight.E_Headlight_C"
+        },
+        "Dynamics": {
+          "PropagationType": "ComputeVelocity",
+          "GenerateCollider": false,
+          "Mass": 1.0,
+          "ResidentFrame": [ "EntityRef", "ExcavatorRover" ]
+        },
+        "Graphics": {
+          "RenderFar": true,
+          "Scale": 1.0,
+          "IsLightSource": false
+        },
+        "Location": [ "doubleV3", 2.0, 0, 0.5 ],
+        "Velocity": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "Acceleration": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "Rotation": [ "doubleV4", 0.0, 0.0, 0.0, 1.0 ],
+        "AngVelocity": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "AngAcceleration": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "Sensors": {
+          "Headlight": {
+            "InnerConeAngle_deg": 40.0,
+            "OuterConeAngle_deg": 50.0,
             "AttenuationRadius_m": 50.0,
-            "Intensity": 200000.0
+            "Intensity": 400000.0
+          }
+        }
+      },
+      {
+        "#Required": {
+          "Type": "BP",
+          "Name": "SamplingRover_Headlight",
+          "Systems": []
+        },
+        "#BP": {
+          "BP_Path": "/Game/Prebuilt_BPs/GeometryTracer/E_Headlight.E_Headlight_C"
+        },
+        "Dynamics": {
+          "PropagationType": "ComputeVelocity",
+          "GenerateCollider": false,
+          "Mass": 1.0,
+          "ResidentFrame": [ "EntityRef", "SamplingRover" ]
+        },
+        "Graphics": {
+          "RenderFar": true,
+          "Scale": 1.0,
+          "IsLightSource": false
+        },
+        "Location": [ "doubleV3", 1.0, 0, 0.5 ],
+        "Velocity": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "Acceleration": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "Rotation": [ "doubleV4", 0.0, 0.0, 0.0, 1.0 ],
+        "AngVelocity": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "AngAcceleration": [ "doubleV3", 0.0, 0.0, 0.0 ],
+        "Sensors": {
+          "Headlight": {
+            "InnerConeAngle_deg": 65.0,
+            "OuterConeAngle_deg": 75.0,
+            "AttenuationRadius_m": 20.0,
+            "Intensity": 100000.0
           }
         }
       },
@@ -1340,6 +2314,75 @@
       },
       {
         "#Required": {
+          "Name": "TruckRover_Battery",
+          "Type": "FromTemplate",
+          "Systems": []
+        },
+        "#FromTemplate": {
+          "Source_Path": "SharedData/SCAssets/Basic/EmptyEntity.json",
+          "ParamOverrides": {
+            "Name": "TruckRover_Battery",
+            "Attachment": "Fixed",
+            "Rel_Location": [ "doubleV3", 0.0, 0.0, 0.0 ],
+            "Rel_Rotation": [ "doubleV4", 0.0, 0.0, 0.0, 1.0 ],
+            "Scale": [ "doubleV3", 1.0, 1.0, 1.0 ],
+            "Socket": [ "int32", -1 ],
+            "Resources": {
+              "currentPower": 8000000.0,
+              "PowerType": "Storage",
+              "Maximum_Power_Storage": 10000000.0
+            }
+          }
+        }
+      },
+      {
+        "#Required": {
+          "Name": "ExcavatorRover_Battery",
+          "Type": "FromTemplate",
+          "Systems": []
+        },
+        "#FromTemplate": {
+          "Source_Path": "SharedData/SCAssets/Basic/EmptyEntity.json",
+          "ParamOverrides": {
+            "Name": "ExcavatorRover_Battery",
+            "Attachment": "Fixed",
+            "Rel_Location": [ "doubleV3", 0.0, 0.0, 0.0 ],
+            "Rel_Rotation": [ "doubleV4", 0.0, 0.0, 0.0, 1.0 ],
+            "Scale": [ "doubleV3", 1.0, 1.0, 1.0 ],
+            "Socket": [ "int32", -1 ],
+            "Resources": {
+              "currentPower": 3000000.0,
+              "PowerType": "Storage",
+              "Maximum_Power_Storage": 5000000.0
+            }
+          }
+        }
+      },
+      {
+        "#Required": {
+          "Name": "SamplingRover_Battery",
+          "Type": "FromTemplate",
+          "Systems": []
+        },
+        "#FromTemplate": {
+          "Source_Path": "SharedData/SCAssets/Basic/EmptyEntity.json",
+          "ParamOverrides": {
+            "Name": "SamplingRover_Battery",
+            "Attachment": "Fixed",
+            "Rel_Location": [ "doubleV3", 0.0, 0.0, 0.0 ],
+            "Rel_Rotation": [ "doubleV4", 0.0, 0.0, 0.0, 1.0 ],
+            "Scale": [ "doubleV3", 1.0, 1.0, 1.0 ],
+            "Socket": [ "int32", -1 ],
+            "Resources": {
+              "currentPower": 2000000.0,
+              "PowerType": "Storage",
+              "Maximum_Power_Storage": 3000000.0
+            }
+          }
+        }
+      },
+      {
+        "#Required": {
           "Name": "PowerAssembly",
           "Type": "Assembly",
           "Systems": []
@@ -1389,6 +2432,27 @@
             "ChargingStation_ScoutRover2": {
               "From": [ "EntityRef", "ChargingStationGenerator" ],
               "To": [ "EntityRef", "ScoutRover2_Battery" ],
+              "Solver": "AdvRes_Power",
+              "Priority": 2,
+              "IsActive": false
+            },
+            "ChargingStation_TruckRover": {
+              "From": [ "EntityRef", "ChargingStationGenerator" ],
+              "To": [ "EntityRef", "TruckRover_Battery" ],
+              "Solver": "AdvRes_Power",
+              "Priority": 2,
+              "IsActive": false
+            },
+            "ChargingStation_ExcavatorRover": {
+              "From": [ "EntityRef", "ChargingStationGenerator" ],
+              "To": [ "EntityRef", "ExcavatorRover_Battery" ],
+              "Solver": "AdvRes_Power",
+              "Priority": 2,
+              "IsActive": false
+            },
+            "ChargingStation_SamplingRover": {
+              "From": [ "EntityRef", "ChargingStationGenerator" ],
+              "To": [ "EntityRef", "SamplingRover_Battery" ],
               "Solver": "AdvRes_Power",
               "Priority": 2,
               "IsActive": false

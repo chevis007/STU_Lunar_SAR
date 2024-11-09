@@ -7,6 +7,17 @@ from API.STU_Common import XY, Command, CoordToXY
 
 #TODO docstrings on all of these functions
 
+
+def LatLonAltToXY(lla: st.PlanetUtils.LatLonAlt) -> XY:
+    planet: st.Entity = st.GetSimEntity().GetParam(st.VarType.entityRef, "Planet")
+    radius = planet.GetParam(st.VarType.double, ["#Planet", "General", "Radius"]) * 1000.0
+    return CoordToXY(st.PlanetUtils.Coord(lla, 0.0, radius))
+
+
+def XYToLatLonAlt(en: st.Entity, xy: XY) -> st.PlanetUtils.LatLonAlt:
+    return xy.toLLA()
+
+
 def HasComms(en: st.Entity) -> bool:
     return en.GetParam(st.VarType.bool, "HasComms")
 
@@ -122,6 +133,11 @@ def GetTargetScanStatus(en: st.Entity) -> tuple[bool, XY, bool]:
         found: bool = scanner_en.GetParam(st.VarType.bool, "TargetFound")
         loc = scanner_en.GetParam(st.VarType.doubleV3, "TargetLocation")
         xy = CoordToXY(st.PlanetUtils.Coord(loc, np.identity(3), 1737400))
+        if not found:
+            cam_scanner_en : st.Entity = en.GetParam(st.VarType.entityRef, "CamScanner")
+            found: bool = cam_scanner_en.GetParam(st.VarType.bool, "TargetFound")
+            loc = cam_scanner_en.GetParam(st.VarType.doubleV3, "TargetLocation")
+            xy = CoordToXY(st.PlanetUtils.Coord(loc, np.identity(3), 1737400))
         return found, xy, has_comms
     else:
         return False, XY(0,0), has_comms

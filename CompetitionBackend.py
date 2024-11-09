@@ -74,12 +74,11 @@ while not exit_flag:
 
     ### Sim end condition checking ###
     # Check whether the challenge end condition has been met
-    # (For initial submission: Any robot reaches the crash site)
+    # (For initial submission: Any robot detects the crash site)
     # (For full submission: LTV with enough resources has reached the crash site)
 
     end_condition = True
 
-    #TODO implementation
     any_robot_reached_crash_site = False
 
     for en in every_en:
